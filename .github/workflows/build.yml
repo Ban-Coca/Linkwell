@@ -34,11 +34,12 @@ jobs:
     steps:
       - name: Build
         run: |
-          ext:""
-          if [ "$GOOS" = windows]; then ext=".exe"
+          mkdir -p dist
+          ext=""
+          if [ "$GOOS" = windows]; then
+            ext=".exe"
           fi
           go build -o "dist/linkwell-${GOOS}-${GOARCH}${ext}" .
-          go build -o dist/myapp
       - name: Checksum
         run: | 
           cd dist
